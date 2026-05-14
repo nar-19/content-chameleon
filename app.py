@@ -171,7 +171,9 @@ if generate_button:
             
             try:
                 with st.spinner(f"Adapting for {platform}..."):
-                    response = model.generate_content(prompt, temperature=TEMPERATURE)
+                    response = model.generate_content(prompt, 
+                                                      generation_config = { "temperature" : TEMPERATURE }
+                                                     )
                     # Use response.text to get the generated markdown/text
                     st.markdown(response.text)
             except Exception as e:
